@@ -8,7 +8,10 @@ $(document).ready(function() {
     items.forEach((item) => store.addItem(item));
     shoppingList.render();
   });
+  
 });
+
+
 
 //CREATE ITEM TEST
 // api.createItem('pears', (newItem) => {
