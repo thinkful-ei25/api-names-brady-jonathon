@@ -7,7 +7,9 @@ const store = (function(){
   };
 
   const findAndUpdate = function(id, newData){
+    console.log(id + ' ' + newData);
     let oldData = this.findById(id);
+    console.log(oldData);
     Object.assign(oldData, newData);
   };
 
