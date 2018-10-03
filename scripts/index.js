@@ -7,11 +7,11 @@ $(document).ready(function() {
 });
 
 
-api.getItems(function(data) {
-  console.log(data);
+api.createItem('pears', (newItem) => {
+  api.getItems((items) => {
+    console.log(items);
+  });
 });
-
-console.log(api.BASE_URL);
 
 store.items.push(Item.create('apples'));
 
