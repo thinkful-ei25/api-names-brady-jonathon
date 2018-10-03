@@ -82,8 +82,12 @@ const shoppingList = (function(){
   function handleItemCheckClicked() {
     $('.js-shopping-list').on('click', '.js-item-toggle', event => {
       const id = getItemIdFromElement(event.currentTarget);
-      store.findAndToggleChecked(id);
-      render();
+      const checkedItem = store.findById(id);
+      checkedItem.checked = !checkedItem.checked;
+      api.updateItem(id, checkedItem);
+      store.findAndUpdate(id, checkedItem, render());
+      console.log('item checked');
+      //render();
     });
   }
   
@@ -103,9 +107,9 @@ const shoppingList = (function(){
     $('.js-shopping-list').on('submit', '.js-edit-item', event => {
       event.preventDefault();
       const id = getItemIdFromElement(event.currentTarget);
-      const itemName = $(event.currentTarget).find('.shopping-item').val();
-      store.findAndUpdateName(id, itemName);
-      store.setItemIsEditing(id, false);
+      const newName = $(event.currentTarget).find('.shopping-item').val();
+      api.updateItem(id, newName)
+      store.findAndUpdate(id, newName);
       render();
     });
   }
