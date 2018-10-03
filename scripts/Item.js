@@ -15,22 +15,9 @@ const Item = (function(){
     };
   };
 
-  const createItem = function(name, callback){
-    let newItem = JSON.stringify({
-      name : name,
-    });
-    $.ajax({
-      url : `${BASE_URL}/items`,
-      method : 'POST',
-      contentType :'application/json',
-      data : newItem,
-      success : callback,
-    });
-  };
   return {
     validateName,
     create,
-    createItem,
   };
   
 }());
