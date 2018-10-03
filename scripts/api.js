@@ -30,7 +30,7 @@ const api = (function(){
       contentType: 'application/json',
       data: JSON.stringify(updateData),
       success: callback
-    })
+    });
   };
 
   const deleteItem = function(id, callback){
@@ -39,7 +39,7 @@ const api = (function(){
       method: 'DELETE',
       contentType: 'application/json',
       success: callback
-    })
+    });
   };
 
   return {
