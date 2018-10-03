@@ -34,11 +34,16 @@ const store = (function(){
     this.searchTerm = term;
   };
 
+  function toggleCheckForListItem(id){
+    const items = store.items.find(item => item.id === id);
+    items.checked = !items.checked;
+  }
+
   return {
     items: [],
     hideCheckedItems: false,
     searchTerm: '',
-
+    toggleCheckForListItem,
     addItem,
     findById,
     findAndUpdate,
