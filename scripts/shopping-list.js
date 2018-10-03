@@ -82,12 +82,14 @@ const shoppingList = (function(){
   function handleItemCheckClicked() {
     $('.js-shopping-list').on('click', '.js-item-toggle', event => {
       const id = getItemIdFromElement(event.currentTarget);
+      console.log(id);
       const checkedItem = store.findById(id);
-      checkedItem.checked = !checkedItem.checked;
-      api.updateItem(id, checkedItem);
-      store.findAndUpdate(id, checkedItem, render());
-      console.log('item checked');
-      //render();
+      //checkedItem.checked = !checkedItem.checked;
+      //checkedItem.checked = !checkedItem.check;
+      api.updateItem(checkedItem.id, {checked: !checkedItem.checked}, () => {
+        store.findAndUpdate(id, {checked: !checkedItem.checked});
+        render();
+      });
     });
   }
   
